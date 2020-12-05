@@ -52,7 +52,7 @@ function Header() {
                     {/* Shopping cart icon */}
                     <ShoppingCartIcon />
                     {/* Number of items in the cart */}
-                    <span>0</span>
+                    <span className="header_optionLineTwo header_cartCount">0</span>
                  </div>
                 </Link>
 

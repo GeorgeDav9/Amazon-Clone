@@ -2,6 +2,9 @@
     background-color: #131921;
     display: flex;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .header_logo {
@@ -9,6 +12,16 @@
     object-fit: contain;
     margin: 0 20px;
     margin-top: 18px;
+}
+
+.header_optionCart {
+    display: flex;
+    align-items: center;
+}
+
+.header_cartCount {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .header_option {
