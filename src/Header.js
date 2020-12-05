@@ -2,6 +2,7 @@ import React from 'react'
 import './Header.css'
 import { Link } from 'react-router-dom'
 import SearchIcon from "@material-ui/icons/Search"
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"
 
 function Header() {
     return (
@@ -17,20 +18,44 @@ function Header() {
             <input type="text" className="header_searchInput" />
             <SearchIcon className="header_searchIcon" />
             </div>
+
             {/* 3 links on the right */}
-            <div className="headerNav">
+            <div className="header_nav">
+
                 {/* 1st Link */}
                 <Link to="/login" className="header_link">
                   <div class="header_option"> 
-                    <span>Hello u</span>
-                    <span>Sign In</span>
+                    <span className="header_optionLineOne">Hello u</span>
+                    <span className="header_optionLineTwo">Sign In</span>
                   </div>
                 </Link>
+
                 {/* 2nd Link */}
-                
+                <Link to="/" className="header_link">
+                  <div class="header_option"> 
+                    <span className="header_optionLineOne">Returns</span>
+                    <span className="header_optionLineTwo">& Orders</span>
+                  </div>
+                  </Link>
+
                 {/* 3rd Link */}
-                
+                <Link to="/" className="header_link">
+                  <div class="header_option"> 
+                    <span className="header_optionLineOne">Your</span>
+                    <span className="header_optionLineTwo">Prime</span>
+                  </div>
+                </Link>
+
                 {/* 4th Link */}
+                <Link to="/checkout" className="header_link">
+                 <div class="header_optionCart">
+                    {/* Shopping cart icon */}
+                    <ShoppingCartIcon />
+                    {/* Number of items in the cart */}
+                    <span>0</span>
+                 </div>
+                </Link>
+
             </div>
 
 
