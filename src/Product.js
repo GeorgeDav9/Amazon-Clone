@@ -4,6 +4,7 @@ import "./Product.css"
 function Product({ id, title, image, price, rating }) {
     return (
         <div className="product">
+          <div class="product_info">
             <p>{title}</p>
             <p className="product_price">
                 <small>$</small>
@@ -15,12 +16,13 @@ function Product({ id, title, image, price, rating }) {
                    .map((_) => (
                      <p>⭐️</p>
                   ))}
-               }
-             </div>
+             </div> 
+          </div>
+            
            <img src={image} alt="" />
            <button type="">Add to cart</button>
         </div>
     );
-}
 
+}
 export default Product
