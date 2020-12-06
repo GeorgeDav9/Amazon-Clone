@@ -6,7 +6,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { useStateValue } from "./StateProvider"
 
 function Header() {
-    const [{ cart }] = useStateValue();
+    const [{ cart }, dispatch] = useStateValue();
     return (
         <nav className="header">
             {/* Logo on the left */}
