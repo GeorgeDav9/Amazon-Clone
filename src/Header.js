@@ -1,10 +1,12 @@
-import React from 'react'
-import './Header.css'
-import { Link } from 'react-router-dom'
-import SearchIcon from "@material-ui/icons/Search"
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"
+import React from 'react';
+import './Header.css';
+import { Link } from 'react-router-dom';
+import SearchIcon from "@material-ui/icons/Search";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { useStateValue } from "./StateProvider"
 
 function Header() {
+    const [{ cart }] = useStateValue();
     return (
         <nav className="header">
             {/* Logo on the left */}
@@ -52,7 +54,7 @@ function Header() {
                     {/* Shopping cart icon */}
                     <ShoppingCartIcon />
                     {/* Number of items in the cart */}
-                    <span className="header_optionLineTwo header_cartCount">0</span>
+    <span className="header_optionLineTwo header_cartCount">{cart?.length}</span>
                  </div>
                 </Link>
 
