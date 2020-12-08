@@ -1,10 +1,21 @@
-import React from 'react'
-import './Header.css'
-import { Link } from 'react-router-dom'
-import SearchIcon from "@material-ui/icons/Search"
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart"
+import React from 'react';
+import './Header.css';
+import { Link } from 'react-router-dom';
+import SearchIcon from "@material-ui/icons/Search";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { useStateValue } from "./StateProvider"
+import { auth } from './firebase'
+
 
 function Header() {
+    const [{ cart, user }, dispatch] = useStateValue();
+
+    const handleAuth = () => {
+      if (user) {
+        auth.signOut();
+      }
+    }
+
     return (
         <nav className="header">
             {/* Logo on the left */}
@@ -21,14 +32,13 @@ function Header() {
 
             {/* 3 links on the right */}
             <div className="header_nav">
-
-                {/* 1st Link */}
-                <Link to="/login" className="header_link">
-                  <div class="header_option"> 
-                    <span className="header_optionLineOne">Hello u</span>
-                    <span className="header_optionLineTwo">Sign In</span>
-                  </div>
-                </Link>
+              {/* 1st Link */}
+        <Link to={!user && '/login'} className="header_link">
+          <div onClick={handleAuth} className="header_option">
+            <span className="header_optionLineOne">Hello {!user ? 'Guest' : user.email}</span>
+            <span className="header_optionLineTwo">{user ? 'Sign Out' : 'Sign In'}</span>
+          </div>
+        </Link>
 
                 {/* 2nd Link */}
                 <Link to="/" className="header_link">
@@ -52,7 +62,7 @@ function Header() {
                     {/* Shopping cart icon */}
                     <ShoppingCartIcon />
                     {/* Number of items in the cart */}
-                    <span className="header_optionLineTwo header_cartCount">0</span>
+                    <span className="header_optionLineTwo header_cartCount">{cart?.length}</span>
                  </div>
                 </Link>
 
