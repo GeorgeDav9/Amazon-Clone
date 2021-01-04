@@ -6,8 +6,13 @@ import Home from './Home';
 import Checkout from './Checkout';
 import Payment from './Payment';
 import Login from './Login'
+import Orders from './Orders';
 import { auth } from './firebase';
-import { useStateValue } from './StateProvider'
+import { useStateValue } from './StateProvider';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const promise = loadStripe('pk_test_51I3rpKA5NhSvBdPiYrqTwg0xqatHrGlm5lDVXAWkvifjviorlKtE1vNam0CCYGYyZdjFvwIKEwrbJ9cHzvyU7JvW00Z6tZALo8');
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -40,9 +45,15 @@ useEffect(() => {   // will only run once when the app component works
            <Header />
            <Checkout />
           </Route>
+          <Route path="/orders">
+           <Header />
+           <Orders />
+          </Route>
           <Route path="/payment">
            <Header />
+          <Elements stripe={promise}>
            <Payment />
+           </Elements>
           </Route>
           <Route path="/login">
             <Login />
@@ -51,11 +62,7 @@ useEffect(() => {   // will only run once when the app component works
              <Header />
              <Home /> 
           </Route>
-            
-        </Switch> 
-    
-      
-    
+        </Switch>
       </div>
     </Router>
   );
