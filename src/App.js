@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from './Header';
 import Home from './Home';
 import Checkout from './Checkout';
+import Payment from './Payment';
 import Login from './Login'
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider'
@@ -38,6 +39,10 @@ useEffect(() => {   // will only run once when the app component works
           <Route path="/checkout">
            <Header />
            <Checkout />
+          </Route>
+          <Route path="/payment">
+           <Header />
+           <Payment />
           </Route>
           <Route path="/login">
             <Login />
